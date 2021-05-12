@@ -8,14 +8,27 @@ import java.util.ArrayList;
 public class Cartao {
     private String numero;
     private ArrayList<Jogo> jogos;
+    private Apostador dono;
+
+    public Cartao(String numero, Apostador dono) {
+        this.numero = numero;
+        this.dono = dono;
+    }   
+
+    public Apostador getDono() {
+        return dono;
+    }
+
+    public void setDono(Apostador dono) {
+        this.dono = dono;
+    }
 
     public Cartao() {
         this("");
     }
 
     public Cartao(String numero) {
-        this.numero = numero;
-        jogos = new ArrayList<>();
+        this(numero, null);
     }
 
     public String getNumero() {
@@ -34,9 +47,17 @@ public class Cartao {
         this.jogos.add(j);
     }
 
-    //public void setJogos(ArrayList<Jogo> jogos) {
-    //    this.jogos = jogos;
-    //}
+    public void setJogos(ArrayList<Jogo> jogos) {
+        this.jogos = jogos;
+    }
+
+    int quantidadeAcertos(Cartao gabarito) {
+        int qtde =0;
+        for (int i=0; i < jogos.size(); i++) {
+            if (jogos.get(i).getRessultado() == gabarito.getJogos().get(i).getRessultado())
+                qtde++;
+        }return qtde;
+    }
     
     
     
