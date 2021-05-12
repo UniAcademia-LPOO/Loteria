@@ -10,12 +10,35 @@ public class Cartao {
     private ArrayList<Jogo> jogos;
 
     public Cartao() {
+        this("");
     }
 
-    public Cartao(String numero, ArrayList<Jogo> jogos) {
+    public Cartao(String numero) {
         this.numero = numero;
-        this.jogos = jogos;
+        jogos = new ArrayList<>();
     }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public ArrayList<Jogo> getJogos() {
+        return jogos;
+    }
+    
+    public void addJogo(Jogo j) {
+        this.jogos.add(j);
+    }
+
+    //public void setJogos(ArrayList<Jogo> jogos) {
+    //    this.jogos = jogos;
+    //}
+    
+    
     
     
 }
