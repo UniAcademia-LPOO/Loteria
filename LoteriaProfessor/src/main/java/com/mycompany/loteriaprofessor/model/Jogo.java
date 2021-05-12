@@ -1,12 +1,19 @@
 package com.mycompany.loteriaprofessor.model;
 
 
-public class Jogo {
+public class Jogo {    
     private Time timeA,timeB;
     private EResultado ressultado;
 
     public Jogo() {
     }
+
+    public Jogo(Time timeA, Time timeB) {
+        this.timeA = timeA;
+        this.timeB = timeB;
+    }
+    
+    
 
     public Jogo(Time timeA, Time timeB, EResultado ressultado) {
         this.timeA = timeA;

@@ -2,6 +2,7 @@ package com.mycompany.loteriaprofessor;
 
 import com.mycompany.loteriaprofessor.model.Apostador;
 import com.mycompany.loteriaprofessor.model.Cartao;
+import com.mycompany.loteriaprofessor.model.EResultado;
 import com.mycompany.loteriaprofessor.model.Jogo;
 import com.mycompany.loteriaprofessor.model.Loteria;
 import com.mycompany.loteriaprofessor.model.Time;
@@ -38,6 +39,14 @@ public class Principal {
         c.setJogos(inicializaJogos());
         System.out.println("##Informe o resultado :\n (1)Coluna 1 (0) Coluna Meio (2) Coluna 2");        
         for (Jogo jogo : c.getJogos()){
+            System.out.println(jogo.getTimeA().getTime() + " x " + jogo.getTimeB().getTime());
+            int escolha = scan.nextInt();
+            if (escolha==1)
+                jogo.setRessultado(EResultado.Coluna_1);
+            else if (escolha==2)
+                jogo.setRessultado(EResultado.Coluna_2);
+            else
+                jogo.setRessultado(EResultado.Coluna_Meio);
             
         }
         

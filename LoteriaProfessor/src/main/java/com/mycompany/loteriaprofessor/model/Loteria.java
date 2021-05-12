@@ -24,6 +24,7 @@ public class Loteria {
         this.dataLoteria = dataLoteria;
         this.valorPremio = valorPremio;
         this.gabarito = gabarito;
+        apostas = new ArrayList<>();
     }
 
     public String getDataLoteria() {
@@ -61,5 +62,15 @@ public class Loteria {
     public void setGabarito(Cartao gabarito) {
         this.gabarito = gabarito;
     }   
+    
+    public ArrayList<Cartao> ganhador(){
+        ArrayList<Cartao> ganhadores = new ArrayList<>();
+        for (Cartao ap : apostas) {
+            if (ap.quantidadeAcertos(gabarito) == gabarito.getJogos().size())
+                ganhadores.add(ap);
+        }
+        
+        return ganhadores;
+    }
     
 }

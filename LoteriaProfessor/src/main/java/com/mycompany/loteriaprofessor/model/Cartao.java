@@ -13,6 +13,7 @@ public class Cartao {
     public Cartao(String numero, Apostador dono) {
         this.numero = numero;
         this.dono = dono;
+        jogos = new ArrayList<>();
     }   
 
     public Apostador getDono() {
