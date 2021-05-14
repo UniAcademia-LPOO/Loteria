@@ -24,7 +24,44 @@ public class Principal {
                 break;
         }
         
+        lot.setGabarito(lerGabarito());
+        
+        ArrayList<Cartao> ganhadores = lot.ganhador();
+        if (ganhadores.isEmpty())
+            System.out.println("## Não há ganhadores");
+        else 
+            for (Cartao c : ganhadores) {
+                System.out.println("## Ganhador : " + c.getDono().getNome() + " " + c.getNumero());
+            }
+        
     }
+    
+    
+    private static Cartao lerGabarito() {
+        Scanner scan = new Scanner(System.in);
+        Cartao gab = new Cartao("Gabarito");
+        gab.setJogos(inicializaJogos());
+        System.out.println("## Informe o Gabarito : ");
+        lerResultadoJogos(gab, scan);
+        return gab;
+        
+        
+    }
+
+    private static void lerResultadoJogos(Cartao gab, Scanner scan) {
+        for (Jogo jogo : gab.getJogos()){
+            System.out.println(jogo.getTimeA().getTime() + " x " + jogo.getTimeB().getTime());
+            int escolha = scan.nextInt();
+            if (escolha==1)
+                jogo.setRessultado(EResultado.Coluna_1);
+            else if (escolha==2)
+                jogo.setRessultado(EResultado.Coluna_2);
+            else
+                jogo.setRessultado(EResultado.Coluna_Meio);
+            
+        }
+    }
+    
     
     private static Cartao lerCartao(){
         Scanner scan = new Scanner(System.in);
@@ -38,17 +75,7 @@ public class Principal {
         
         c.setJogos(inicializaJogos());
         System.out.println("##Informe o resultado :\n (1)Coluna 1 (0) Coluna Meio (2) Coluna 2");        
-        for (Jogo jogo : c.getJogos()){
-            System.out.println(jogo.getTimeA().getTime() + " x " + jogo.getTimeB().getTime());
-            int escolha = scan.nextInt();
-            if (escolha==1)
-                jogo.setRessultado(EResultado.Coluna_1);
-            else if (escolha==2)
-                jogo.setRessultado(EResultado.Coluna_2);
-            else
-                jogo.setRessultado(EResultado.Coluna_Meio);
-            
-        }
+        lerResultadoJogos(c, scan);
         
         return c;
     }
@@ -63,4 +90,6 @@ public class Principal {
         return jogos;
         
     }
+
+    
 }
